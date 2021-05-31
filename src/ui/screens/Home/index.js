@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
+import { withNamespaces } from 'react-i18next';
 
 const styles = StyleSheet.create({
   container: {
@@ -9,12 +10,12 @@ const styles = StyleSheet.create({
   },
 });
 
-function Home() {
+function Home({ t }) {
   return (
     <View style={styles.container}>
-      <Text>Home Screen</Text>
+      <Text>{t('COMMON:HOME_TITLE')}</Text>
     </View>
   );
 }
 
-export default Home;
+export default withNamespaces(['COMMON'], { wait: true })(Home);

@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
+import { withNamespaces } from 'react-i18next';
 
 const styles = StyleSheet.create({
   container: {
@@ -9,12 +10,12 @@ const styles = StyleSheet.create({
   },
 });
 
-function Settings() {
+function Settings({ t }) {
   return (
     <View style={styles.container}>
-      <Text>Settings Screen</Text>
+      <Text>{t('COMMON:SETTINGS_TITLE')}</Text>
     </View>
   );
 }
 
-export default Settings;
+export default withNamespaces(['COMMON'], { wait: true })(Settings);
