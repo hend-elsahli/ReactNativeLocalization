@@ -1,6 +1,12 @@
 {
   "COMMON": {
     "HOME_TITLE": "Home Screen",
-    "SETTINGS_TITLE": "Settings Screen"
+    "SETTINGS_TITLE": "Settings Screen",
+    "CARD_TITLE": "Title goes here",
+    "CARD_SUBTITLE": "Some subtitle goes here",
+    "ICON": "Icon",
+    "OPEN_DRAWER": "Open Drawer",
+    "SWITCH_LANG": "Switch Language",
+    "CLEAR_USER_LANG": "Clear User Language"
   }
 }

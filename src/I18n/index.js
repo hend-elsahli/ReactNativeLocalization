@@ -1,23 +1,15 @@
-import { Platform, NativeModules } from 'react-native';
+import { I18nManager } from 'react-native';
+import RNRestart from 'react-native-restart';
 import i18n from 'i18next';
 import { reactI18nextModule } from 'react-i18next';
+import AsyncStorage from '@react-native-community/async-storage';
+
+import { USER_LANG, getDeviceLang } from '../utils';
 
 /** Localization */
 import ar from './ar.json';
 import en from './en.json';
 /** Localization */
-
-const getDeviceLang = () => {
-  const appLanguage =
-    Platform.OS === 'ios'
-      ? NativeModules.SettingsManager.settings.AppleLocale ||
-        NativeModules.SettingsManager.settings.AppleLanguages[0]
-      : NativeModules.I18nManager.localeIdentifier;
-
-  return appLanguage.indexOf('_') !== -1
-    ? appLanguage.slice(0, 2)
-    : appLanguage;
-};
 
 /*---------------------------------
           LANGUAGE DETECTOR
@@ -26,8 +18,16 @@ const languageDetector = {
   init: Function.prototype,
   type: 'languageDetector',
   async: true, // flags below detection to be async
-  detect: (callback) => {
-    const deviceLang = getDeviceLang();
+  detect: async (callback) => {
+    const userLang = await AsyncStorage.getItem(USER_LANG);
+
+    const deviceLang = userLang || getDeviceLang();
+    const isLangRTL = deviceLang === 'ar';
+    if (isLangRTL !== I18nManager.isRTL) {
+      await I18nManager.allowRTL(isLangRTL);
+      await I18nManager.forceRTL(isLangRTL);
+      RNRestart.Restart();
+    }
     callback(deviceLang);
   },
   cacheUserLanguage: () => {},

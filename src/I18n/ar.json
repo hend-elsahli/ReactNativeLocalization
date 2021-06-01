@@ -1,6 +1,12 @@
 {
   "COMMON": {
-    "HOME_TITLE": "#Home Screen",
-    "SETTINGS_TITLE": "#Settings Screen"
+    "HOME_TITLE": "الصفحة الرئيسية",
+    "SETTINGS_TITLE": "الإعدادات",
+    "CARD_TITLE": "العنوان يكون هنا",
+    "CARD_SUBTITLE": "العنوان الفرعي يكون هنا",
+    "ICON": "الأيقونة",
+    "OPEN_DRAWER": "القائمة الجانبية",
+    "SWITCH_LANG": "تغيير اللغة",
+    "CLEAR_USER_LANG": "حذف تفضيلات المستخدم للغة"
   }
 }

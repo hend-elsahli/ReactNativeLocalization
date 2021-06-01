@@ -3,7 +3,6 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { translate } from 'react-i18next';
 
 import SettingsStack from '../SettingsStack';
-import HomeStack from '../HomeStack';
 
 /* eslint-disable no-unused-vars */
 import I18n from 'i18next';
@@ -13,8 +12,7 @@ import i18n from '../../../I18n';
 const Drawer = createDrawerNavigator();
 function MainFlow() {
   return (
-    <Drawer.Navigator>
-      <Drawer.Screen name="Home" component={HomeStack} />
+    <Drawer.Navigator initialRouteName="Settings">
       <Drawer.Screen name="Settings" component={SettingsStack} />
     </Drawer.Navigator>
   );
